@@ -3,19 +3,25 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/book", name="book_")
+ */
 class BookController extends AbstractController
 {
     /**
-     * @Route("/book", name="book")
+     * @Route("/", name="index")
+     * @param BookRepository $bookRepository
+     * @return Response
      */
-    public function index()
+    public function index(BookRepository $bookRepository)
     {
         return $this->render('book/index.html.twig', [
-            'controller_name' => 'BookController',
+            'books' => $bookRepository->findBy([], ['author' => 'ASC'])
         ]);
     }
 

@@ -1,0 +1,12 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block title %}Soutien | Add Book{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un livre</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>Ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}
